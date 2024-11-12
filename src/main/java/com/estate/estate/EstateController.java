@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/v1/estate")
+@RequestMapping(path = "/api/v1/estates")
 @AllArgsConstructor
 public class EstateController {
 
     private EstateService estateService;
-    @GetMapping("/all-estates")
+    @GetMapping
     public ResponseEntity<List<Estate>> getAllEstates() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.estateService.getAll());
     }
-    @GetMapping("/estate-by-id/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Estate> getEstateById(@PathVariable("id") long id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
